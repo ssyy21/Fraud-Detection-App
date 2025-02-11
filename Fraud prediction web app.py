@@ -1,15 +1,17 @@
-
-
+import os
 import numpy as np
 import pickle
 import streamlit as st
 
-# loading the saved model
-model_path = r"D:\Financial Forecsting\Fraud_Detection\Fraud_Detection_model2\Fraud-Detection-App\model.sav"
+model_path = os.path.join(os.getcwd(), "model.sav")
 
-loaded_model = pickle.load(open(model_path, 'rb'))
+# Check if the file exists
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"Model file not found at: {model_path}")
 
-# creating a function for Prediction
+# Load the model
+with open(model_path, "rb") as model_file:
+    loaded_model = pickle.load(model_file)
 
 def fraud_prediction(input_data):
     
