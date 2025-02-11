@@ -1,16 +1,13 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jul  9 20:34:15 2024
 
-@author: User
-"""
 
 import numpy as np
 import pickle
 import streamlit as st
 
 # loading the saved model
-loaded_model = pickle.load(open('"E:\public_ML_app\model.sav"', 'rb'))
+model_path = r"D:\Financial Forecsting\Fraud_Detection\Fraud_Detection_model2\Fraud-Detection-App\model.sav"
+
+loaded_model = pickle.load(open(model_path, 'rb'))
 
 # creating a function for Prediction
 
@@ -36,19 +33,19 @@ def main():
     
     
     # giving a title
-    st.title('Transaction Fraud Detection App')
+    st.title('Transaction Fraud Detection Model')
     
     
     # getting the input data from the user
     
     
-    step = st.number_input('Number of step',step=1.,format="%.2f")
+    step = st.number_input('Number of step : Step represents the time in a sequence of transactions. Higher values indicate later transactions.',step=1.,format="%.2f")
     type = st.number_input('Transaction Type',step=1.,format="%.2f")
     amount = st.number_input('Enter Amount',step=1.,format="%.2f")
-    oldbalanceOrg = st.number_input('Enter oldbalanceOrg',step=1.,format="%.2f")
-    newbalanceOrig = st.number_input('Enter newbalanceOrig',step=1.,format="%.2f")
-    oldbalanceDest	= st.number_input('oldbalanceDest value',step=1.,format="%.2f")
-    newbalanceDest = st.number_input('newbalanceDest value',step=1.,format="%.2f")
+    oldbalanceOrg = st.number_input('Enter oldbalanceOrg : The previous balance of the origin account ',step=1.,format="%.2f")
+    newbalanceOrig = st.number_input('Enter newbalanceOrig : The new balance of the origin account',step=1.,format="%.2f")
+    oldbalanceDest	= st.number_input('oldbalanceDest value: The previous balance of the destination account ',step=1.,format="%.2f")
+    newbalanceDest = st.number_input('newbalanceDest value : The new balance of the destination account',step=1.,format="%.2f")
     
     
     
